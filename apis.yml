@@ -1,7 +1,29 @@
 aid: memoir
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/memoir.png
 name: Memoir
-description: Memoir is a company surfaced as a portfolio company of y-combinator and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Memoir, operated by Tachyon Labs, Inc., is an AI-powered marketing automation
+  platform in Y Combinator's Spring 2026 (S26) batch. It connects to a company's
+  development and product tools such as GitHub, Linear, and Slack and turns
+  shipped product updates into multi-channel marketing content: social posts,
+  blog posts, changelogs, demo videos, and customer updates generated in the
+  company's brand voice. The product is organized around "Memory" (Atlas) for
+  building context about a company and "Motion" (market-motion) for producing and
+  distributing content as teams ship features. Memoir is a marketing SaaS product;
+  as of this profile it exposes only a private authenticated backend
+  (api.trymemoir.ai returns 401) and publishes no public developer API,
+  documentation, or SDKs.
 url: https://raw.githubusercontent.com/api-evangelist/memoir/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,10 +33,37 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Marketing
+- Marketing Automation
+- Artificial Intelligence
+- Content Generation
+- Developer Marketing
+- SaaS
+- Y Combinator
 apis: []
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
+common:
+- type: DomainSecurity
+  url: security/memoir-domain-security.yml
+- type: Website
+  url: https://www.trymemoir.ai/
+- type: Pricing
+  url: https://www.trymemoir.ai/pricing/
+- type: Login
+  url: https://www.trymemoir.ai/login
+- type: TermsOfService
+  url: https://www.trymemoir.ai/terms/
+- type: PrivacyPolicy
+  url: https://www.trymemoir.ai/privacy/
+- type: Support
+  url: mailto:maanav@trymemoir.ai
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
