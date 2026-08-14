@@ -1,29 +1,44 @@
 aid: memoir
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: paid
+  onboarding: sales-gated
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
+  label: Paid · Sales-gated onboarding
+  confidence: high
+  source:
+  - plans
+  - website
+  generated: '2026-08-13'
   method: derived
+  note: >-
+    Product access model, not an API access model — Memoir publishes no API.
+    All three published tiers (Starter $300/mo, Scale $1,500/mo, Enterprise
+    custom) route to a "Book a demo" / "Talk to us" Calendly conversation; the
+    only authenticated entry point on the site is /login for existing customers.
+    No free tier, no trial, and no self-serve checkout are published.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/memoir.png
 name: Memoir
 description: >-
   Memoir, operated by Tachyon Labs, Inc., is an AI-powered marketing automation
-  platform in Y Combinator's Spring 2026 (S26) batch. It connects to a company's
-  development and product tools such as GitHub, Linear, and Slack and turns
-  shipped product updates into multi-channel marketing content: social posts,
-  blog posts, changelogs, demo videos, and customer updates generated in the
-  company's brand voice. The product is organized around "Memory" (Atlas) for
-  building context about a company and "Motion" (market-motion) for producing and
-  distributing content as teams ship features. Memoir is a marketing SaaS product;
-  as of this profile it exposes only a private authenticated backend
-  (api.trymemoir.ai returns 401) and publishes no public developer API,
-  documentation, or SDKs.
+  platform in Y Combinator's Spring 2026 batch, founded in 2026 by Maanav Agrawal
+  and Jason Zhan. It connects to the systems where product work happens — GitHub,
+  Linear and Slack on every plan, plus Jira, Notion, Google Docs, Drive and CRM on
+  higher tiers — and turns shipped product updates into multi-channel marketing
+  content: social posts, blog posts, changelogs, launch pages, ads, demo videos
+  and customer updates generated in the company's brand voice and routed through
+  human approval. The product is organized around "Memory" (Atlas) for building
+  context about a company and "Motion" (market-motion) for producing and
+  distributing content as teams ship features. Published customers include Datost,
+  Smol Machines, TraceRoot and Zatanna. Pricing is published at three tiers —
+  Starter $300/mo, Scale $1,500/mo and a custom Enterprise tier — all sold through
+  a demo conversation rather than self-serve checkout. Memoir is a marketing SaaS
+  product with no developer program: it exposes only a private session-
+  authenticated backend (api.trymemoir.ai answers every path, including
+  /.well-known/*, with HTTP 401 "Not signed in") and publishes no public API,
+  developer portal, API reference, machine-readable specification, SDK, CLI or
+  MCP server.
 url: https://raw.githubusercontent.com/api-evangelist/memoir/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -33,7 +48,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-13'
 tags:
 - Company
 - Marketing
@@ -45,10 +60,29 @@ tags:
 - Y Combinator
 apis: []
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-13'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 3
   pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Memoir ships an end-user marketing SaaS only — there is no developer surface
+    of any kind: www.trymemoir.ai/developers, /docs, /api-docs and /llms.txt all
+    return 404 from the Vercel SPA, and the single backend host
+    api.trymemoir.ai answers every path, including /openapi.json, /graphql, /mcp
+    and /.well-known/*, with a blanket HTTP 401 {"detail":"Not signed in"}.
+  evidence:
+  - url: https://www.trymemoir.ai/developers
+    status: 404
+  - url: https://www.trymemoir.ai/llms.txt
+    status: 404
+  - url: https://api.trymemoir.ai/openapi.json
+    status: 401
+  - url: https://api.trymemoir.ai/.well-known/agent-card.json
+    status: 401
+  checked: '2026-08-13'
 common:
 - type: DomainSecurity
   url: security/memoir-domain-security.yml
@@ -56,6 +90,10 @@ common:
   url: https://www.trymemoir.ai/
 - type: Pricing
   url: https://www.trymemoir.ai/pricing/
+- type: Plans
+  url: plans/memoir-plans-pricing.yml
+- type: LLMsTxt
+  url: llms/memoir-llms.txt
 - type: Login
   url: https://www.trymemoir.ai/login
 - type: TermsOfService
