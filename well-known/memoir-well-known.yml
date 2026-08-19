@@ -1,0 +1,62 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of https://www.trymemoir.ai and https://api.trymemoir.ai
+description: >-
+  Well-known discovery probe for Memoir (Tachyon Labs, Inc.). NO well-known
+  document is served on any Memoir host. The marketing site (www.trymemoir.ai,
+  a client-rendered SPA on Vercel) returns 404 for every /.well-known/ path; the
+  backend host (api.trymemoir.ai, behind an AWS ELB/k8s ingress) returns a
+  blanket HTTP 401 {"detail":"Not signed in","redirect":"/login"} for every
+  path including /.well-known/*, so even the anonymous discovery documents that
+  are meant to be public are not reachable without a session.
+  NO WellKnown / SecurityTxt pointer is emitted in apis.yml — this file records
+  an ABSENCE, and a recorded absence must never be scored as a presence.
+hosts:
+  - host: https://www.trymemoir.ai
+    role: marketing site / application front end
+    documents:
+      - path: /.well-known/security.txt          # RFC 9116
+        status: 404
+      - path: /.well-known/openid-configuration  # OIDC discovery
+        status: 404
+      - path: /.well-known/oauth-authorization-server  # RFC 8414
+        status: 404
+      - path: /.well-known/api-catalog           # RFC 9727
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json       # A2A 1.0
+        status: 404
+      - path: /.well-known/agent.json            # A2A pre-0.3
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /robots.txt
+        status: 404
+      - path: /sitemap.xml
+        status: 404
+  - host: https://api.trymemoir.ai
+    role: private application backend (session-authenticated)
+    note: >-
+      Every path on this host answers 401 with the JSON body
+      {"detail":"Not signed in","redirect":"/login"} — this is a catch-all auth
+      gate, not evidence that any of these documents exist.
+    documents:
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/openid-configuration
+        status: 401
+      - path: /.well-known/oauth-authorization-server
+        status: 401
+      - path: /.well-known/oauth-protected-resource
+        status: 401
+      - path: /.well-known/api-catalog
+        status: 401
+      - path: /.well-known/ai-plugin.json
+        status: 401
+      - path: /.well-known/agent-card.json
+        status: 401
+      - path: /.well-known/agent.json
+        status: 401
+documents_found: 0
+files: []

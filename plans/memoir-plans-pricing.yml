@@ -1,0 +1,206 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.trymemoir.ai/pricing/
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Memoir
+providerId: memoir
+created: '2026-08-13'
+modified: '2026-08-13'
+tags:
+  - Marketing
+  - Marketing Automation
+  - Artificial Intelligence
+  - Content Generation
+  - SaaS
+description: >-
+  Commercial pricing for the Memoir product (operated by Tachyon Labs, Inc.) as
+  published at https://www.trymemoir.ai/pricing/ on 2026-08-13. Three tiers —
+  Starter at $300/month, Scale at $1,500/month, and a custom-priced Enterprise
+  tier. These are SEAT/PRODUCT plans for the Memoir SaaS application, not API
+  plans: Memoir publishes no public API, no developer portal, and no API pricing
+  of any kind. Every tier is purchased through a "Book a demo" / "Talk to us"
+  Calendly conversation rather than self-serve checkout, so no online sign-up
+  flow or published overage rate exists.
+plan_count: 3
+plans:
+  - id: memoir-starter
+    name: Starter
+    type: subscription
+    description: >-
+      "For small teams shipping fast and needing credible launch output."
+      Includes GitHub, Linear, and Slack connections; one product workspace;
+      auto-drafted blog, changelog, LinkedIn, and X posts; founder voice tuning;
+      and weekly niche and news monitoring. Marked "Most teams start here" on the
+      pricing page.
+    pricing:
+      currency: USD
+      basePrice: '300.00'
+      basePeriod: month
+    entries:
+      - label: Monthly Subscription
+        description: Starter plan recurring fee
+        name: monthly_fee
+        type: subscription
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '300.00'
+      - label: Product Workspaces
+        description: One product workspace (one product with its own connected tools, brand voice, and campaign history)
+        name: workspaces
+        type: quota
+        metric: workspaces
+        limit: 1
+        timeFrame: account
+      - label: Source Connections
+        description: GitHub, Linear, and Slack connections
+        name: source_connectors
+        type: feature
+        metric: feature
+        limit: 3
+        timeFrame: account
+      - label: Auto-Drafted Content
+        description: Auto-drafted blog, changelog, LinkedIn, and X posts
+        name: auto_drafted_content
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Founder Voice Tuning
+        description: Brand/founder voice tuning on generated content
+        name: voice_tuning
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Niche and News Monitoring
+        description: Weekly niche and news monitoring
+        name: news_monitoring
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: week
+
+  - id: memoir-scale
+    name: Scale
+    type: subscription
+    description: >-
+      "For teams that want product, customer, and go-to-market context in one
+      marketing memory." Everything in Starter, plus Jira, Notion, Google Docs,
+      Drive, and CRM inputs; multiple product and brand workspaces; launch pages,
+      ads, partner copy, and lifecycle campaigns; and a shared approval workflow
+      for founders and marketers.
+    pricing:
+      currency: USD
+      basePrice: '1500.00'
+      basePeriod: month
+    entries:
+      - label: Monthly Subscription
+        description: Scale plan recurring fee
+        name: monthly_fee
+        type: subscription
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '1500.00'
+      - label: Product Workspaces
+        description: Multiple product and brand workspaces; no published numeric cap
+        name: workspaces
+        type: quota
+        metric: workspaces
+        limit: null
+        timeFrame: account
+      - label: Extended Source Connections
+        description: Jira, Notion, Google Docs, Drive, and CRM inputs in addition to Starter connectors
+        name: extended_connectors
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Campaign Surfaces
+        description: Launch pages, ads, partner copy, and lifecycle campaigns
+        name: campaign_surfaces
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Shared Approval Workflow
+        description: Shared approval workflow for founders and marketers
+        name: approval_workflow
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+
+  - id: memoir-enterprise
+    name: Enterprise
+    type: enterprise
+    description: >-
+      "For larger teams with security, data, workflow, and deployment
+      requirements." Custom priced — the pricing page shows "Custom" with a
+      "Talk to us" call to action. Everything in Scale, plus custom source
+      connectors and approval roles, security review and vendor onboarding
+      support, dedicated workspace configuration, and priority support for
+      launch-critical workflows.
+    pricing:
+      currency: USD
+      basePrice: null
+      basePeriod: month
+      notes: Custom pricing; not published. Quoted through a sales conversation.
+    entries:
+      - label: Custom Connectors and Approval Roles
+        description: Custom source connectors and approval roles
+        name: custom_connectors
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Security Review and Vendor Onboarding
+        description: Security review and vendor onboarding support
+        name: security_review
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Dedicated Workspace Configuration
+        description: Dedicated workspace configuration
+        name: dedicated_workspace
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+      - label: Priority Support
+        description: Priority support for launch-critical workflows
+        name: priority_support
+        type: feature
+        metric: feature
+        limit: 1
+        timeFrame: account
+references:
+  - name: Memoir Pricing Page
+    url: https://www.trymemoir.ai/pricing/
+  - name: Memoir Website
+    url: https://www.trymemoir.ai/
+  - name: Book a demo (Calendly — the only purchase path published)
+    url: https://calendly.com/maanav-memoir/30min
+notes:
+  - >-
+    These are application/product plans, not API plans. Memoir publishes no
+    developer program: api.trymemoir.ai answers every path with HTTP 401
+    {"detail":"Not signed in"} and www.trymemoir.ai/developers, /docs and
+    /llms.txt all return 404 (probed 2026-08-13).
+  - >-
+    No self-serve sign-up exists. Every tier, including Starter, routes to a
+    "Book a demo" Calendly link; the site's only authenticated entry point is
+    /login for existing customers.
+  - >-
+    No overage rates, usage metering, seat pricing, or annual-billing discount
+    are published. Workspace counts on Scale are described qualitatively
+    ("multiple") with no numeric cap, so limit is recorded as null rather than
+    guessed.
